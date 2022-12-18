@@ -98,11 +98,10 @@ export default function (props) {
         window.scrollTo(0, 0)
         let xScale = 1;
         let yScale = 1;
-        console.log(window.innerWidth, window.innerHeight);
-        xScale = window.innerWidth / 1600
-        yScale = window.innerHeight / 1080
 
-        console.log(xScale, yScale);
+        xScale = document.getElementsByTagName('body')[0].offsetWidth / 1600
+        yScale = document.getElementsByTagName('body')[0].offsetHeight / 1080
+
         transformRef.current.style.width = `1600px`
         transformRef.current.style.height = `1080px`
         transformRef.current.style.transform = `scaleX(${xScale}) scaleY(${yScale})`

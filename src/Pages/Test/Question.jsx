@@ -28,6 +28,7 @@ export default (props) => {
     }
 
     useEffect(() => {
+        cancelAnimationFrame(requestRef.current)
         requestRef.current = requestAnimationFrame(animate);
         return () => {
             cancelAnimationFrame(requestRef.current)

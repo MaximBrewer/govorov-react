@@ -5,6 +5,7 @@ module.exports = {
     content: [
         './src/**/*.jsx',
         './public/index.html',
+        './public/quiz.html',
     ],
 
     theme: {
