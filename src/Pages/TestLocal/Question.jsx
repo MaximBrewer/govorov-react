@@ -32,7 +32,15 @@ export default function (props) {
         }
     }, [question])
 
+
+    useEffect(() => {
+        return () => {
+            cancelAnimationFrame(requestRef.current)
+        }
+    }, [])
+
     const handleAnswer = (index) => {
+        cancelAnimationFrame(requestRef.current)
         timerRef.current = 0;
         setInnerClasses(outClasses)
         setTimeout(() => {

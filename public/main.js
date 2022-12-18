@@ -8,6 +8,7 @@ function createWindow () {
     width: 768,
     height: 518,
     resizable: false,
+    useContentSize: true,
     autoHideMenuBar: true,
     menuBarVisible: false,
     excludedFromShownWindowsMenu: true,

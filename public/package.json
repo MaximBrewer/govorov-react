@@ -5,8 +5,6 @@
     "main": "main.js",
     "window": {
         "resizable": false,
-        "width": 768,
-        "height": 518,
         "autoHideMenuBar": true,
         "menuBarVisible": false,
         "excludedFromShownWindowsMenu": true,

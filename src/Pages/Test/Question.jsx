@@ -12,6 +12,7 @@ export default (props) => {
     const [innerClasses, setInnerClasses] = useState(inClasses)
 
     const requestRef = useRef(0)
+    const timeoutRef = useRef(0)
     const timerRef = useRef(0)
     const timerElementRef = useRef(null)
 
@@ -22,20 +23,31 @@ export default (props) => {
             return false;
         }
         timerElementRef.current && (timerElementRef.current.style.width = `${timerRef.current * 100 / 30}%`)
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
             requestRef.current = requestAnimationFrame(animate);
         }, 1 / 60)
     }
 
     useEffect(() => {
         cancelAnimationFrame(requestRef.current)
+        clearTimeout(timeoutRef.current)
         requestRef.current = requestAnimationFrame(animate);
         return () => {
             cancelAnimationFrame(requestRef.current)
         }
     }, [question])
 
+
+    useEffect(() => {
+        return () => {
+            clearTimeout(timeoutRef.current)
+            cancelAnimationFrame(requestRef.current)
+        }
+    }, [])
+
     const handleAnswer = (index) => {
+        clearTimeout(timeoutRef.current)
+        cancelAnimationFrame(requestRef.current)
         timerRef.current = 0;
         setInnerClasses(outClasses)
         setTimeout(() => {
